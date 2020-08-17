@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>nomameserick</title>
     <link rel="stylesheet" href="css/inde.css">
 </head>
 <body>
@@ -11,6 +11,11 @@
     <div id="app">
         <div class="product">
             <div class="left-column">
+                <div class="sidebar-img">
+                    <img v-for="img in selectedProduct.images"
+                    :src="img"
+                    class="side-img"/>
+                </div>
                 <img v-bind:src="selectedProductImg" class="img" />
             </div>
             <div class="center-column">
@@ -40,7 +45,7 @@
                         </span>
                     </div>
 
-                    <ul class="details">
+                    <ul class="detalles">
                         <li v-for="detail in selectedProduct.detalles">
                             {{ detail }}
                         </li>

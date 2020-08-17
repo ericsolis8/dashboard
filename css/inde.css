@@ -12,8 +12,8 @@
     background: #bbbdc0;
 } 
 .product {
-    display: block;
-    text-align: center; 
+    display: flex;
+    /* text-align: center;  */
 }
 .details {
     display: flex;
@@ -43,7 +43,7 @@ hr {
     color: #810c04;
 }
 .colors {
-    display: flex
+    display: flex;
 }
 .color-box {
     margin: 10px 10px 0 0;
@@ -55,4 +55,12 @@ hr {
     height: 34px;
     width: 34px;
     border: 2px solid rgb(231, 118, 0);
+}
+.side-img {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+
+    width: 80px;
+    height: 100px;
 }
