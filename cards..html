@@ -12,9 +12,10 @@
         <div class="product">
             <div class="left-column">
                 <div class="sidebar-img">
-                    <img v-for="img in selectedProduct.images"
+                    <img v-for="(img, index) in selectedProduct.images"
                     :src="img"
-                    class="side-img"/>
+                    v-bind:class="{ 'side-img': true, 'img-selected': index === seleccionaIndexImagen}"
+                    @mouseenter="selectImage(index)"/>
                 </div>
                 <img v-bind:src="selectedProductImg" class="img" />
             </div>

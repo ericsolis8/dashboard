@@ -3,6 +3,7 @@ const app = new Vue({
     data: {
         seleccionaProductoId: undefined,
         verProductoId: undefined,
+        seleccionaIndexImagen: 0,
         platillo: {
             name: "Postres",
             opciones: [
@@ -55,20 +56,24 @@ const app = new Vue({
         },
         selectedProductImg() {
             if(this.verProductoId) {
-                return this.platillo.opciones.find(p => p.id === this.verProductoId).img
+                return this.platillo.opciones.find(p => p.id === this.verProductoId).images[0]
             }
-            return this.selectedProduct.img
+            return this.selectedProduct.images[this.seleccionaIndexImagen]
         }
     },
     methods: {
         selectProduct(opcionId) {
             this.seleccionaProductoId = opcionId
+            this.seleccionaIndexImagen = 0
         },
         setPreviewModel(opcionId) {
             this.verProductoId = opcionId
         },
         clearPreviewModel() {
             this.verProducotId = undefined
+        },
+        selectImage(index) {
+            this.seleccionaIndexImagen = index
         }
     },
 });
