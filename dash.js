@@ -4,6 +4,7 @@ const app = new Vue({
         seleccionaProductoId: undefined,
         verProductoId: undefined,
         seleccionaIndexImagen: 0,
+        cart: [],
         platillo: {
             name: "Postres",
             opciones: [
@@ -59,7 +60,10 @@ const app = new Vue({
                 return this.platillo.opciones.find(p => p.id === this.verProductoId).images[0]
             }
             return this.selectedProduct.images[this.seleccionaIndexImagen]
-        }
+        },
+        cartAmount() {
+            return this.cart.length
+        },
     },
     methods: {
         selectProduct(opcionId) {

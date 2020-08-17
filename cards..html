@@ -7,50 +7,58 @@
     <link rel="stylesheet" href="css/inde.css">
 </head>
 <body>
-    <div class="nav-bar"></div>
     <div id="app">
-        <div class="product">
-            <div class="left-column">
-                <div class="sidebar-img">
-                    <img v-for="(img, index) in selectedProduct.images"
-                    :src="img"
-                    v-bind:class="{ 'side-img': true, 'img-selected': index === seleccionaIndexImagen}"
-                    @mouseenter="selectImage(index)"/>
-                </div>
-                <img v-bind:src="selectedProductImg" class="img" />
+        <div class="nav-bar">
+            <div class="cart">
+                <img src="img/cart.png">
+                <span class="amount">{{cartAmount}}</span>
+                <span class="description"></span>
             </div>
-            <div class="center-column">
-                <div class="details">
-                    <h1>{{ platillo.name }}</h1>
-                    <hr>
-
-                    <span v-if="selectedProduct.cantidad > 50" class="stock in-stock">
-                        In stock.
-                    </span>
-                    <span v-else-if="selectedProduct.cantidad > 0 && selectedProduct.cantidad < 50"
-                        class="stock low-stock">
-                        Hurry! Almost over.
-                    </span>
-                    <span v-else class="stock out-of-stock">
-                        Out of stock.
-                    </span>
-
-                    <span><b>Postre {{selectedProduct.nombre}}</b></span>
-                    <div class="colors">
-                        <span v-for="opcion in platillo.opciones" v-bind:key="opcion.id" v-bind:title="opcion.nombre"
-                            v-bind:style="{backgroundColor: opcion.color }"
-                            v-bind:class="{ 'color-box': true, 'color-selected': selectedProduct.id === opcion.id}"
-                            v-on:click="selectProduct(opcion.id)"
-                            @mouseenter="setPreviewModel(opcion.id)"
-                            @mouseleave="clearPreviewModel">
-                        </span>
+        </div>
+        <div id="app">
+            <div class="product">
+                <div class="left-column">
+                    <div class="sidebar-img">
+                        <img v-for="(img, index) in selectedProduct.images"
+                        :src="img"
+                        v-bind:class="{ 'side-img': true, 'img-selected': index === seleccionaIndexImagen}"
+                        @mouseenter="selectImage(index)"/>
                     </div>
-
-                    <ul class="detalles">
-                        <li v-for="detail in selectedProduct.detalles">
-                            {{ detail }}
-                        </li>
-                    </ul>
+                    <img v-bind:src="selectedProductImg" class="img" />
+                </div>
+                <div class="center-column">
+                    <div class="details">
+                        <h1>{{ platillo.name }}</h1>
+                        <hr>
+    
+                        <span v-if="selectedProduct.cantidad > 50" class="stock in-stock">
+                            In stock.
+                        </span>
+                        <span v-else-if="selectedProduct.cantidad > 0 && selectedProduct.cantidad < 50"
+                            class="stock low-stock">
+                            Hurry! Almost over.
+                        </span>
+                        <span v-else class="stock out-of-stock">
+                            Out of stock.
+                        </span>
+    
+                        <span><b>Postre {{selectedProduct.nombre}}</b></span>
+                        <div class="colors">
+                            <span v-for="opcion in platillo.opciones" v-bind:key="opcion.id" v-bind:title="opcion.nombre"
+                                v-bind:style="{backgroundColor: opcion.color }"
+                                v-bind:class="{ 'color-box': true, 'color-selected': selectedProduct.id === opcion.id}"
+                                v-on:click="selectProduct(opcion.id)"
+                                @mouseenter="setPreviewModel(opcion.id)"
+                                @mouseleave="clearPreviewModel">
+                            </span>
+                        </div>
+    
+                        <ul class="detalles">
+                            <li v-for="detail in selectedProduct.detalles">
+                                {{ detail }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
